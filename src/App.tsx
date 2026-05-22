@@ -548,9 +548,60 @@ export default function App() {
                   <Sparkles className="w-4 h-4 text-indigo-600 animate-pulse" />
                   Direct Text Script
                 </button>
-              </div>
+              </div>              {cookieBlockedAlert ? (
+                <div className="relative bg-amber-50/30 border border-amber-250 p-8 md:p-12 text-center animate-fade-in flex flex-col items-center">
+                  {/* Decorative Geometric Elements */}
+                  <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-amber-200"></div>
+                  <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-amber-200"></div>
+                  
+                  <div className="w-16 h-16 bg-amber-100/75 rounded-full flex items-center justify-center mb-6 text-amber-700">
+                    <AlertCircle className="w-8 h-8" />
+                  </div>
+                  
+                  <h3 className="text-lg md:text-xl font-bold font-display text-slate-800 mb-2">
+                    Sandbox Session Authorization Blocked
+                  </h3>
+                  <p className="text-slate-600 text-xs md:text-sm max-w-md mx-auto leading-relaxed mb-8 font-medium">
+                    Your browser's security settings are blocking third-party session cookies inside this embedded iframe. 
+                    Because ScribeSync utilizes secure user session handles to authenticate speech transcribers and script workflows, the system cannot receive your file payload in this context.
+                  </p>
 
-              {activeTab === "audio" ? (
+                  <div className="w-full max-w-sm bg-white border border-slate-200 p-4 rounded text-left flex flex-col gap-2.5 mb-8 text-xs font-medium text-slate-600">
+                    <div className="flex items-start gap-2">
+                      <span className="w-5 h-5 rounded-full bg-indigo-50 border border-indigo-150 flex items-center justify-center shrink-0 font-bold text-indigo-700 text-[10px]">1</span>
+                      <p>Click the <strong>Open in New Tab</strong> button to bypass iframe sandboxing limits.</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="w-5 h-5 rounded-full bg-indigo-50 border border-indigo-150 flex items-center justify-center shrink-0 font-bold text-indigo-700 text-[10px]">2</span>
+                      <p>The app will load cleanly under a secure first-party browser context.</p>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="w-5 h-5 rounded-full bg-indigo-50 border border-indigo-150 flex items-center justify-center shrink-0 font-bold text-indigo-700 text-[10px]">3</span>
+                      <p>Upload files or enter direct script copy for zero-latency transcription!</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex flex-col sm:flex-row items-center gap-3">
+                    <a 
+                      href={window.location.href} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs py-3 px-6 rounded-lg shadow-lg shadow-indigo-100 transition transform active:scale-95 cursor-pointer"
+                    >
+                      Open in New Tab
+                      <ArrowUpRight className="w-4 h-4" />
+                    </a>
+                    <button 
+                      type="button"
+                      onClick={() => fetchTasks()}
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 bg-white hover:bg-slate-50 border border-slate-200 text-slate-600 font-bold text-xs py-3 px-5 rounded-lg transition active:scale-95 cursor-pointer"
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" />
+                      Retry Connection
+                    </button>
+                  </div>
+                </div>
+              ) : activeTab === "audio" ? (
                 <>
                   <div className="relative bg-white border border-slate-200 p-8 md:p-12 shadow-xs flex flex-col items-center justify-center text-center">
                     {/* Decorative Geometric Elements */}
