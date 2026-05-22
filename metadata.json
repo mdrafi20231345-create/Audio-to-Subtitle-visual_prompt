@@ -1,0 +1,6 @@
+{
+  "name": "Audio Subtitle Generator",
+  "description": "Upload any size of audio and generate high-quality subtitles using Gemini.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
